@@ -2,9 +2,7 @@ use std::{env, process};
 use minigrep::*;
 
 fn main() {
-    let  args:Vec<String> = env::args().collect();
-
-    let config = Config::build(&args).unwrap_or_else(
+    let config = Config::build(env::args()).unwrap_or_else(
         |err| {
             eprintln!("Cannot parse args: {err}");
             process::exit(1);

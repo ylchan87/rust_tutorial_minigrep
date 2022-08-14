@@ -3,7 +3,7 @@ use std::{env, fs};
 fn main() {
     let  args:Vec<String> = env::args().collect();
 
-    let config = parse_config(&args);
+    let config = Config::new(&args);
     
     
 
@@ -20,8 +20,10 @@ struct Config {
     file_path: String,
 }
 
-fn parse_config(args:&Vec<String>) -> Config {
-    let query = args[1].clone();
-    let file_path = args[2].clone();
-    Config {query, file_path}
+impl Config{
+    fn new(args:&Vec<String>)->Self{
+        let query = args[1].clone();
+        let file_path = args[2].clone();
+        Config {query, file_path}       
+    }
 }

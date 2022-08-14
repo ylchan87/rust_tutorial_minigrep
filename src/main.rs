@@ -6,7 +6,7 @@ fn main() {
 
     let config = Config::build(&args).unwrap_or_else(
         |err| {
-            println!("Cannot parse args: {err}");
+            eprintln!("Cannot parse args: {err}");
             process::exit(1);
         } 
     );
@@ -15,7 +15,7 @@ fn main() {
     println!("In file {}", config.file_path);
 
     if let Err(e) = run(config){
-        println!("Fail at running, err : {e}");
+        eprintln!("Fail at running, err : {e}");
         process::exit(1);
     }
 }
